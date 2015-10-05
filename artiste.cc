@@ -14,10 +14,6 @@
 
 #include "movie.h"
 
-#ifdef __APPLE__
-using sighandler_t = sig_t;
-#endif
-
 using std::cout;
 using std::string;
 

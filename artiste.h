@@ -4,10 +4,10 @@
 #ifndef HIPTEXT_ARTISTE_H_
 #define HIPTEXT_ARTISTE_H_
 
+#include "unicode.h"
 #include <functional>
 #include <ostream>
 
-#include "unicode.h"
 
 class Movie;
 class Graphic;

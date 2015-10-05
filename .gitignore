@@ -7,3 +7,5 @@
 /gtest/src/*.o
 /*.swp
 /*.plist
+build/
+dist/
