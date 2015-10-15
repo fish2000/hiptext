@@ -146,7 +146,12 @@ install(TARGETS hiptext DESTINATION lib)
 install(DIRECTORY ./ DESTINATION include/libhiptext
     PATTERN "gtest" EXCLUDE
     PATTERN "build" EXCLUDE
+    PATTERN "cmake" EXCLUDE
     PATTERN ".git" EXCLUDE
     PATTERN "*.cc" EXCLUDE
+    PATTERN "*.py" EXCLUDE
+    PATTERN "*.rl" EXCLUDE
     PATTERN "*.h"
     PATTERN "*.hh")
+install(DIRECTORY ./cmake/ DESTINATION share/cmake
+    PATTERN "*.cmake")
