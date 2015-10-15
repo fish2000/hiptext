@@ -145,4 +145,8 @@ target_link_libraries(hiptext
 install(TARGETS hiptext DESTINATION lib)
 install(DIRECTORY ./ DESTINATION include/libhiptext
     PATTERN "gtest" EXCLUDE
-    PATTERN "*.h")
+    PATTERN "build" EXCLUDE
+    PATTERN ".git" EXCLUDE
+    PATTERN "*.cc" EXCLUDE
+    PATTERN "*.h"
+    PATTERN "*.hh")
