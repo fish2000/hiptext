@@ -9,7 +9,7 @@
 #include <ostream>
 
 
-class Movie;
+// class Movie;
 class Graphic;
 
 using RenderAlgorithm = std::function<void(std::ostream&, const Graphic&)>;
@@ -24,7 +24,7 @@ class Artiste {  // The one who lives in your terminal.
   void operator=(const Artiste& a) = delete;
 
   void PrintImage(Graphic graphic);
-  void PrintMovie(Movie movie);
+  // void PrintMovie(Movie movie);
 
   void GenerateSpectrum();
 

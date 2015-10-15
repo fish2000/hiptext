@@ -1,7 +1,7 @@
 // hiptext - Image to Text Converter
 // By Justine Tunney
 
-#include "png.h"
+#include "png.hh"
 
 #include <memory>
 #include <vector>

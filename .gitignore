@@ -3,7 +3,6 @@
 /*.S
 /test
 /hiptext
-/cpplint.py
 /gtest/src/*.o
 /*.swp
 /*.plist

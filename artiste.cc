@@ -12,7 +12,7 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
-#include "movie.h"
+#include "graphic.h"
 
 #ifdef __APPLE__
 using sighandler_t = sig_t;
@@ -30,11 +30,12 @@ DEFINE_int32(height, 0, "Height of rendering. Defaults to 0, in which case it "
 DEFINE_bool(equalize, false, "Use the histogram equalizer filter. You should "
             "use this when your image looks 'washed out' or grey when rendered "
             "in hiptext");
-DEFINE_bool(stepthrough, false, "Whether to wait for human to press Return "
-            "between frames. Only applicable to movie playbacks");
+// DEFINE_bool(stepthrough, false, "Whether to wait for human to press Return "
+//             "between frames. Only applicable to movie playbacks");
 
 static volatile bool g_done = false;
 
+__attribute__((unused))
 static void OnCtrlC(int /*signal*/) {
   g_done = true;
 }
@@ -160,6 +161,7 @@ void Artiste::PrintImage(Graphic graphic) {
   algorithm_(output_, graphic.BilinearScale(width_, height_));
 }
 
+/*
 void Artiste::PrintMovie(Movie movie) {
   // Movie files sws_scale to size in real-time, so the final
   // dimensions should be precomputed to avoid redundant scaling.
@@ -186,6 +188,7 @@ void Artiste::PrintMovie(Movie movie) {
   signal(SIGINT, old_handler);
   ShowCursor();
 }
+*/
 
 void Artiste::GenerateSpectrum() {
   int width = term_width_;

@@ -48,10 +48,10 @@ add_custom_target("pixel_parse"
 
 
 # find other packages
-include(FindFFMPEG)
+# include(FindFFMPEG)
 include(FindGflags)
 include(FindGlog)
-find_package(FFMPEG REQUIRED)
+# find_package(FFMPEG REQUIRED)
 find_package(Gflags REQUIRED)
 find_package(Glog REQUIRED)
 find_package(Freetype REQUIRED)
@@ -61,13 +61,14 @@ find_package(ZLIB REQUIRED)
 # find_package(${PROJECT_NAME} REQUIRED)
 
 include_directories(
-    ${FFMPEG_INCLUDE_DIR}
+    # ${FFMPEG_INCLUDE_DIR}
     ${GFLAGS_INCLUDE_DIR}
     ${GLOG_INCLUDE_DIR}
     ${FREETYPE_INCLUDE_DIRS}
     ${PNG_INCLUDE_DIR}
     ${JPEG_INCLUDE_DIR}
     ${ZLIB_INCLUDE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
     "/usr/include"
     "/usr/local/include"
 )
@@ -88,9 +89,10 @@ set(srcs
     "hiptext.cc"
     "jpeg.cc"
     "macterm.cc"
-    "movie.cc"
+    # "movie.cc"
     "pixel.cc"
     ${RAGEL_pixel_parse_OUTPUT_SOURCE}
+    ${CMAKE_CURRENT_BINARY_DIR}/pixel_parse.cc
     "png.cc"
     "sixelprinter.cc"
     "termprinter.cc"
@@ -105,10 +107,10 @@ set(hdrs
     "graphic.h"
     "jpeg.h"
     "macterm.h"
-    "movie.h"
+    # "movie.h"
     "pixel.h"
     ${RAGEL_pixel_parse_OUTPUT_HEADER}
-    "png.h"
+    "png.hh"
     "sixelprinter.h"
     "termprinter.h"
     "unicode.h"
@@ -131,10 +133,10 @@ add_dependencies(hiptext "pixel_parse")
 target_link_libraries(hiptext
     glog gflags
     png z m
-    ${FFMPEG_avformat_LIBRARY}
-    ${FFMPEG_avcodec_LIBRARY}
-    ${FFMPEG_avutil_LIBRARY}
-    ${FFMPEG_swscale_LIBRARY}
+    # ${FFMPEG_avformat_LIBRARY}
+    # ${FFMPEG_avcodec_LIBRARY}
+    # ${FFMPEG_avutil_LIBRARY}
+    # ${FFMPEG_swscale_LIBRARY}
     ${FREETYPE_LIBRARIES}
     ${JPEG_LIBRARIES})
 

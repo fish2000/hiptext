@@ -19,9 +19,10 @@
 #include "font.h"
 #include "jpeg.h"
 #include "pixel.h"
-#include "png.h"
+#include "png.hh"
 #include "macterm.h"
-#include "movie.h"
+// #include "movie.h"
+#include "graphic.h"
 #include "xterm256.h"
 #include "termprinter.h"
 #include "sixelprinter.h"
@@ -206,7 +207,7 @@ int main(int argc, char** argv) {
   if (lang == nullptr) lang = "en_US.utf8";
   std::locale::global(std::locale(lang));
   InitFont();
-  Movie::InitializeMain();
+  // Movie::InitializeMain();
 
   RenderAlgorithm algo;
   bool duo_pixel = false;
@@ -254,9 +255,9 @@ int main(int argc, char** argv) {
     artiste.PrintImage(LoadPNG(path));
   } else if (extension == "jpg" || extension == "jpeg") {
     artiste.PrintImage(LoadJPEG(path));
-  } else if (extension == "mov" || extension == "mp4" || extension == "flv" ||
-             extension == "avi" || extension == "mkv") {
-    artiste.PrintMovie(Movie(path));
+  // } else if (extension == "mov" || extension == "mp4" || extension == "flv" ||
+  //            extension == "avi" || extension == "mkv") {
+  //   artiste.PrintMovie(Movie(path));
   } else {
     fprintf(stderr, "Unknown Filetype: %s\n", extension.data());
     exit(1);
