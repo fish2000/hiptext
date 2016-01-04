@@ -70,14 +70,18 @@ include_directories(
     ${ZLIB_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
     "/usr/include"
-    "/usr/local/include"
-)
+    "/usr/local/include")
+
+link_directories(
+    "/usr/local/lib"
+    "/usr/local/opt/glog/lib")
 
 add_definitions(
-    -MD -x c++
+    -MD -g -O3 -x c++
     -fno-exceptions -fno-rtti
-    -Wall -Wextra -fstack-protector-all
-    -g -O3 -std=c++11
+    -Wall -fstack-protector-all
+    -Wno-sign-compare
+    -std=c++14 -stdlib=libc++
     -mtune=native -march=native)
 
 set(srcs
@@ -131,15 +135,15 @@ add_dependencies(hiptext "pixel_parse")
 
 # target_link_libraries(libhiptext)
 target_link_libraries(hiptext
-    glog gflags
-    png z m
-    # ${FFMPEG_avformat_LIBRARY}
-    # ${FFMPEG_avcodec_LIBRARY}
-    # ${FFMPEG_avutil_LIBRARY}
-    # ${FFMPEG_swscale_LIBRARY}
+    ${GLOG_LIBRARIES}
+    gflags png z m
     ${FREETYPE_LIBRARIES}
     ${JPEG_LIBRARIES})
 
+# ${FFMPEG_avformat_LIBRARY}
+# ${FFMPEG_avcodec_LIBRARY}
+# ${FFMPEG_avutil_LIBRARY}
+# ${FFMPEG_swscale_LIBRARY}
 
 # install(TARGETS libhiptext DESTINATION lib)
 install(TARGETS hiptext DESTINATION lib)
